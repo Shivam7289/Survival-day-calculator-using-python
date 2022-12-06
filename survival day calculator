@@ -1,0 +1,112 @@
+from datetime import date
+class survive:
+    def __init__(self,a,b,c):
+        self.a=a
+        self.b=b
+        self.c=Name
+    def cal(self):
+        self.bdate=""
+        for i in self.a:
+            self.bdate+=i
+        self.pdate=""
+        for j in self.b:
+            self.pdate+=j
+        self.l=[]
+        for x in self.bdate:
+            if x.isalpha():
+                self.l.append(8)
+                print()
+                print("BirthDate can't be in Text")
+                break
+        for y in self.pdate:
+            if y.isalpha():
+                self.l.append(9)
+                print()
+                print("PresentDate can't be in Text")
+                break
+        if len(self.bdate)<7 or len(self.pdate)<7:
+            print()
+            print("Enter Complete Date.")
+            self.l.append(7)
+        elif 8 in self.l or 9 in self.l:
+            pass
+        else:
+            self.bday=int(self.bdate[:2])
+            self.bmonth=int(self.bdate[2:4])
+            self.byear=int(self.bdate[4:])
+            self.pday=int(self.pdate[:2])
+            self.pmonth=int(self.pdate[2:4])
+            self.pyear=int(self.pdate[4:])
+    def check(self):
+        if 7 in self.l:
+            pass
+        elif 8 in self.l or 9 in self.l:
+            pass
+        else:
+            if self.bday<0 or self.bday>31:
+                print()
+                print("Enter a valid Birthday")
+                self.l.append(1)
+            if 0>self.bmonth or self.bmonth>12:
+                print()
+                print("Enter a valid BithMonth")
+                self.l.append(2)
+            if len(str(self.byear))!=4:
+                print()
+                print("Enter a valid Year")
+                self.l.append(3)
+            if 0>self.pday or self.pday>31:
+                print()
+                print("Enter a valid PresentDay")
+                self.l.append(4)
+            if 0>self.pmonth or self.pmonth>12:
+                print()
+                print("Enter a valid PresentMonth")
+                self.l.append(5)
+            if len(str(self.pyear))!=4:
+                print()
+                print("Enter a valid Year")
+                self.l.append(6)
+    def printdays(self):
+        if len(self.l)>0:
+            print()
+            print("You Have Made Mistake in Entering The Data!")
+        elif date(self.byear,self.bmonth,self.bday)>date(self.pyear,self.pmonth,self.pday):
+            print()
+            print("Present date Can't be greater than Birthdate")
+        elif date(self.byear,self.bmonth,self.bday)==date(self.pyear,self.pmonth,self.pday):
+            print()
+            print("Congratulation You are starting a New Life")
+        else:
+            self.x=date(self.byear,self.bmonth,self.bday)
+            self.y=date(self.pyear,self.pmonth,self.pday)
+            print()
+            if self.bday==self.pday and self.bmonth==self.pmonth:
+                print("Happy Birthday",self.c)
+                print()
+            print(self.c,"You have Lived",(self.y-self.x).days,"days.")
+            
+print("                                                       Welcome")
+print()
+print("                                              To Survival days Calculator")
+print()
+print("Format: DD/MM/YYYY")
+print()
+Name=input("Enter Your Name: ")
+for i in Name:
+    if i.isdigit():
+        print()
+        print("Name has to be in text")
+        break
+    else:
+        print()
+        a=list(map(str,input("Enter Your Birthdate: ").split("/")))
+        print()
+        b=list(map(str,input("Enter Present Date: ").split("/")))
+        obj=survive(a,b,Name)
+        obj.cal()
+        obj.check()
+        obj.printdays()
+        break
+print()
+print("Thank You :)")
