@@ -24,12 +24,12 @@ class survive:
                 print()
                 print("PresentDate can't be in Text")
                 break
-        if len(self.bdate)<7 or len(self.pdate)<7:
+        if 8 in self.l or 9 in self.l:
+            pass
+        elif len(self.bdate)<8 or len(self.pdate)<8:
             print()
             print("Enter Complete Date.")
             self.l.append(7)
-        elif 8 in self.l or 9 in self.l:
-            pass
         else:
             self.bday=int(self.bdate[:2])
             self.bmonth=int(self.bdate[2:4])
@@ -84,7 +84,7 @@ class survive:
             if self.bday==self.pday and self.bmonth==self.pmonth:
                 print("Happy Birthday",self.c)
                 print()
-            print(self.c,"You have Lived",(self.y-self.x).days,"days.")
+            print(self.c,"You have Lived",((self.y-self.x).days),"days.")
             
 print("                                                       Welcome")
 print()
@@ -93,20 +93,24 @@ print()
 print("Format: DD/MM/YYYY")
 print()
 Name=input("Enter Your Name: ")
-for i in Name:
-    if i.isdigit():
-        print()
-        print("Name has to be in text")
-        break
-    else:
-        print()
-        a=list(map(str,input("Enter Your Birthdate: ").split("/")))
-        print()
-        b=list(map(str,input("Enter Present Date: ").split("/")))
-        obj=survive(a,b,Name)
-        obj.cal()
-        obj.check()
-        obj.printdays()
-        break
+if Name=="":
+    print()
+    print("Name can't be Empty.")
+else:
+    for i in Name:
+        if i.isdigit():
+            print()
+            print("Name has to be in text")
+            break
+        else:
+            print()
+            a=list(map(str,input("Enter Your Birthdate: ").split("/")))
+            print()
+            b=list(map(str,input("Enter Present Date: ").split("/")))
+            obj=survive(a,b,Name)
+            obj.cal()
+            obj.check()
+            obj.printdays()
+            break
 print()
 print("Thank You :)")
